@@ -1,10 +1,10 @@
-
+import '../styles/color.css'
 import { useState ,useRef} from "react";
-const Color = ({ color,index }) => {
+const Color = ({ color}) => {
   
     return (
         
-        <div key={index} className="color" style={{backgroundColor: color }}>
+        <div  className="color" style={{backgroundColor: color }}>
          {color}
             </div>
     );
@@ -20,20 +20,27 @@ const Colores = () => {
     };
     // Initialize state with 27 colors
 
-    const [colors, setColors] = useState(generateColors)
+    const [colors, setColors] = useState(generateColors())
     const handleGenerate = () => {
         setColors(generateColors());
     };
     return (
+        <>
+        <p><h1>Hexadecimal Colors</h1></p> 
+
+        <div className='wrapper'>
+         <button onClick={handleGenerate}>generater</button>
+
         <div className="colors-wrapper">
-            <button onClick={handleGenerate}>generater</button>
             {
                 colors.map((color, index) => (
-                    <Color color={color} index={index} />
+                    <Color key={index} color={color} index={index} />
                 ))
             }
             
-        </div>
+            </div>
+            </div>
+            </>
     );
 
 };
